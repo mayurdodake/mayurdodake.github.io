@@ -1,6 +1,6 @@
 // === CONFIG ===
 // Add all GitHub usernames you want to show here:
-const GITHUB_USERS = ['mayurdodake', 'another-github-account'];
+const GITHUB_USERS = ['mayurdodake', 'mayurdodake-ai'];
 
 // How many top repos to show (combined)
 const MAX_PROJECTS = 12;

@@ -1,14 +1,14 @@
 :root {
-  --accent: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
-  --accent-solid: #6366f1;
-  --bg: linear-gradient(135deg, #f0f4ff, #fdf2f8);
-  --text: #111;
-  --muted: #666;
-  --card: rgba(255, 255, 255, 0.85);
-  --radius: 14px;
+  --bg: #100f0d;
+  --text: #efece4;
+  --muted: #8d887c;
+  --card: #1a1815;
+  --line: #2b2822;
+  --accent: #d98a4a;
+  --accent-soft: #d98a4a1a;
+  --radius: 10px;
   --max-width: 1100px;
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.12);
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -16,13 +16,11 @@
 }
 
 body {
-  font-family: "Inter", system-ui, Arial, sans-serif;
+  font-family: -apple-system, "Inter", system-ui, Arial, sans-serif;
   margin: 0;
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
-  background-attachment: fixed;
-  background-size: cover;
 }
 
 .container {
@@ -33,91 +31,147 @@ body {
 
 /* Hero */
 .hero {
-  background: linear-gradient(120deg, #6366f1, #8b5cf6, #ec4899);
-  color: white;
-  padding: 64px 20px 72px;
-  text-align: center;
-  border-bottom: none;
-  border-radius: 0 0 40px 40px;
-  box-shadow: var(--shadow);
+  padding: 64px 20px 48px;
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 22px;
+}
+
+.hero-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
 .avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 999px;
-  border: 4px solid rgba(255, 255, 255, 0.9);
+  width: 84px;
+  height: 84px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
   object-fit: cover;
-  display: inline-block;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  display: block;
+  box-shadow: var(--shadow);
 }
 
-.hero h1 {
-  margin: 16px 0 6px;
-  font-size: 34px;
+.hero-copy h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
   font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .tagline {
   margin: 0;
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 46ch;
 }
 
 .cta {
-  margin-top: 20px;
+  margin-top: 28px;
 }
 
 .btn {
   display: inline-block;
-  padding: 12px 20px;
-  border-radius: 12px;
+  padding: 11px 20px;
+  border-radius: 7px;
   background: var(--accent);
-  background-size: 200% 200%;
-  color: white;
+  color: #171310;
   font-weight: 600;
+  font-size: 14px;
   text-decoration: none;
-  margin: 8px;
-  box-shadow: var(--shadow);
-  transition: transform 0.2s, box-shadow 0.2s, background-position 0.3s;
+  margin: 0 10px 0 0;
+  transition: transform 0.15s ease, filter 0.15s ease;
 }
 
 .btn:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: var(--shadow-hover);
-  background-position: 100% 0;
+  filter: brightness(1.08);
+  transform: translateY(-1px);
 }
 
 .btn.ghost {
   background: transparent;
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(6px);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.btn.ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .links {
-  margin-top: 14px;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 14px;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.link-btn::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.link-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
 }
 
 /* Sections */
 main section {
-  background: var(--card);
-  padding: 32px;
-  margin: 28px 0;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(12px);
+  padding: 44px 28px;
+  border-bottom: 1px solid var(--line);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+main section:last-of-type {
+  border-bottom: none;
 }
 
 h2 {
-  margin-top: 0;
-  font-size: 22px;
-  font-weight: 600;
-  background: var(--accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin: 0 0 20px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+#about-text {
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 68ch;
+  color: var(--text);
+  margin: 0 0 24px;
 }
 
 /* Skills */
@@ -130,80 +184,143 @@ h2 {
 }
 
 .skills li {
-  background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--text);
   padding: 8px 14px;
-  border-radius: 10px;
-  font-size: 14px;
+  border-radius: 6px;
+  font-size: 13.5px;
   font-weight: 500;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 /* Projects & Apps Grid */
 .projects-grid, .apps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .app-card, .project-card {
-  padding: 20px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.9);
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: var(--shadow);
+  padding: 22px;
+  background: var(--card);
+  transition: background 0.15s ease;
 }
 
 .app-card:hover, .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
+  background: #201d18;
 }
 
 .app-card h3, .project-card h3 {
-  margin: 0 0 10px;
-  font-size: 18px;
+  margin: 0 0 8px;
+  font-size: 16px;
   font-weight: 600;
 }
 
+.app-card h3 a, .project-card h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
 .app-card p, .project-card p {
-  margin: 0 0 14px;
-  font-size: 14px;
+  margin: 0 0 16px;
+  font-size: 13.5px;
   color: var(--muted);
+  line-height: 1.5;
+}
+
+.app-card .btn {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+.project-card .meta {
+  font-size: 12.5px;
+  color: var(--muted);
+  display: flex;
+  gap: 12px;
+}
+
+.project-card .lang {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+.more {
+  margin-top: 18px;
+}
+
+.more a {
+  color: var(--accent);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.more a:hover {
+  text-decoration: underline;
 }
 
 /* Contact form */
+#contact p {
+  color: var(--muted);
+  font-size: 14.5px;
+}
+
+#contact a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}
+
 form label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   font-weight: 500;
+  font-size: 13.5px;
+  color: var(--muted);
 }
 
 input, textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
   font-size: 14px;
-  margin-bottom: 14px;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-top: 6px;
+  background: var(--card);
+  color: var(--text);
+  font-family: inherit;
+  transition: border-color 0.15s ease;
 }
 
 input:focus, textarea:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  border-color: var(--accent);
   outline: none;
 }
 
 #contact-form button {
-  width: 100%;
+  margin-top: 4px;
 }
 
 /* Footer */
 .site-footer {
-  padding: 24px;
+  padding: 28px;
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
-  margin-top: 40px;
+}
+
+.site-footer a {
+  color: var(--muted);
+}
+
+.site-footer a:hover {
+  color: var(--accent);
 }
 
 /* Loader */
@@ -211,19 +328,26 @@ input:focus, textarea:focus {
   padding: 30px;
   text-align: center;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 14px;
+  grid-column: 1 / -1;
 }
 
 /* Responsive */
 @media (max-width: 600px) {
   .hero {
-    padding: 40px 16px;
+    padding: 44px 16px 36px;
+  }
+  .hero-row {
+    gap: 16px;
   }
   .avatar {
-    width: 90px;
-    height: 90px;
+    width: 64px;
+    height: 64px;
   }
-  .hero h1 {
+  .hero-copy h1 {
     font-size: 26px;
+  }
+  main section {
+    padding: 32px 20px;
   }
 }
